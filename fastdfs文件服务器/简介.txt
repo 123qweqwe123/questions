@@ -1,0 +1,55 @@
+FastDFS简介
+
+•FastDFS是一个轻量级的开源分布式文件系统
+
+•FastDFS主要解决了大容量的文件存储和高并发访问的问题，文件存取时实现了负载均衡
+
+•FastDFS实现了软件方式的RAID，可以使用廉价的IDE硬盘进行存储
+
+•支持存储服务器在线扩容
+
+•支持相同内容的文件只保存一份，节约磁盘空间
+
+•FastDFS只能通过ClientAPI访问，不支持POSIX访问方式
+
+•FastDFS特别适合大中型网站使用，用来存储资源文件（如：图片、文档、音频、视频等等）
+
+系统架构－架构图
+
+系统架构－上传文件流程图
+
+• 1. client询问tracker上传到的storage，不需要附加参数；
+
+• 2. tracker返回一台可用的storage；
+
+• 3. client直接和storage通讯完成文件上传。
+
+系统架构－下载文件流程图
+
+• 1. client询问tracker下载文件的storage，参数为文件标识（组名和文件名）；
+
+• 2. tracker返回一台可用的storage；
+
+• 3. client直接和storage通讯完成文件下载。
+
+相关术语
+
+• Tracker Server：跟踪服务器，主要做调度工作，在访问上起负载均衡的作用。记录storage server的状态，是连接Client和Storageserver的枢纽。
+
+• Storage Server：存储服务器，文件和meta data都保存到存储服务器上
+
+• group：组，也可称为卷。同组内服务器上的文件是完全相同的
+
+• 文件标识：包括两部分：组名和文件名（包含路径）
+
+• meta data：文件相关属性，键值对（Key Value Pair）方式，如：width=1024,heigth=768
+
+同步机制
+
+•同一组内的storageserver之间是对等的，文件上传、删除等操作可以在任意一台storage server上进行；
+
+•文件同步只在同组内的storage server之间进行，采用push方式，即源服务器同步给目标服务器；
+
+•源头数据才需要同步，备份数据不需要再次同步，否则就构成环路了；
+
+•上述第二条规则有个例外，就是新增加一台storage server时，由已有的一台storageserver将已有的所有数据（包括源头数据和备份数据）同步给该新增服务器。

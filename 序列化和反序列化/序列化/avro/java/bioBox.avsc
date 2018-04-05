@@ -1,0 +1,26 @@
+{	
+	"namespace": "com.jet.bio.data.avro",
+	"type": "record",
+	"name": "BioBox",
+	"fields": [
+		{"name": "id", "type": ["string", "null"]},
+		{"name": "boxCode", "type": ["string", "null"]},
+		{"name": "boxType", "type": ["string", "null"]},
+		{"name": "projectId", "type": ["string", "null"]},
+		{"name": "fridgeId", "type": ["string", "null"]},
+		{"name": "boxState", "type": ["string", "null"]},
+		{"name": "remark", "type": ["string", "null"]},
+		{"name": "isCheckin", "type": ["string", "null"]},
+		{"name": "checkinlistId", "type": ["string", "null"]},
+		{"name": "lccCode", "type": ["string", "null"]},
+		{"name": "createDate", "type": ["string", "null"]},
+		{"name": "createBy", "type": ["string", "null"]},
+		{"name": "version", "type": ["string", "null"]},
+		{"name": "clientId", "type": ["string", "null"]},
+        {"name": "updateFlag", "type": ["string", "null"]},
+		{"name": "hr3UpdateDate", "type": ["string", "null"]},
+		{"name": "transDate", "type": ["string", "null"]},
+		{"name": "mapp", "type": ["string", "null"]},
+		{"name": "transDateFromMapp", "type": ["string", "null"]}
+	]
+}

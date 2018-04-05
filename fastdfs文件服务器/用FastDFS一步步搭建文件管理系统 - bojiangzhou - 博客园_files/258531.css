@@ -1,0 +1,10 @@
+#MySignature {
+  border:solid 1px #E5E5E5;
+  padding:10px;
+  background:#FFFEFE url(//images.cnblogs.com/cnblogs_com/chiangchou/808138/t_banquan3.png) no-repeat 15px 50%;
+  background-size: 48px;
+  padding-left:80px;
+}
+#MySignature div{
+  line-height: 25px;
+}

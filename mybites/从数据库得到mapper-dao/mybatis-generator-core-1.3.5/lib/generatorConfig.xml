@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry location="ojdbc6-1.0.jar"/>
+
+
+    <context id="context1">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@//10.24.10.224:1521/bdcor5" userId="bdcor5"
+                        password="develop">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.bdcor.pip.web.spem.domain" targetProject="src/main/java">
+            <!-- 是否对model添加 构造函数
+            <property name="constructorBased" value="true"/>-->
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName
+            <property name="enableSubPackages" value="false"/>-->
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法
+            <property name="immutable" value="true"/>-->
+            <!-- 给Model添加一个父类
+            <property name="rootClass" value="com.foo.louis.Hello"/>-->
+            <!-- 是否对类CHAR类型的列的数据进行trim操作
+            <property name="trimStrings" value="true"/>-->
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.bdcor.pip.web.spem.dao" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <table tableName="TEST1" domainObjectName="Test" >
+
+        </table>
+    </context>
+</generatorConfiguration>

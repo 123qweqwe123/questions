@@ -1,0 +1,49 @@
+public class DySchedule {
+    static ExecutorService pool = Executors.newFixedThreadPool(100);
+
+    public static int getLine(){
+        return line.addAndGet(1000);
+    }
+    public static void doJob(){
+        for (int i = 0;i<100;i++){+
+	    //传递参数可以 重写 构造方法 MyThread( int i)
+            Thread thread = new MyThread();
+            pool.execute(thread);
+        }
+        pool.shutdown();
+
+    }
+    public static void main(String[] args) {
+        DySchedule.doJob();
+    }
+}
+
+public class MyThread extends Thread {
+    int i ;
+    @Override
+    public void MyThread(int i){
+	this.i = i;
+    }
+    public void run() {
+        要把所有方法写进 run 里面
+    }
+}
+
+
+
+
+
+
+
+ public static void main(String[] args) {
+	ThreadPoolExecutor poolExecutor_export = new ThreadPoolExecutor(20, 20, 0L, TimeUnit.MILLISECONDS,
+		new LinkedBlockingQueue<Runnable>());
+	for (int i = 0; i < 60; i++) {
+	    NewThread newThread = new NewThread(i);
+	    poolExecutor_export.execute(newThread);
+	}
+	;
+    }
+
+
+

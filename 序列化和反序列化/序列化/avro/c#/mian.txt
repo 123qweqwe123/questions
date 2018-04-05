@@ -1,0 +1,38 @@
+String schemaStr = Environment.CurrentDirectory + "\\avro\\tube2.avsc";
+            String s = File.ReadAllText(schemaStr);
+            RecordSchema schema = RecordSchema.Parse(s) as RecordSchema;
+
+            //schema["address"].Schema as RecordSchema;
+
+            var person = new Avro.Generic.GenericRecord(schema);
+            person.Add("name", "RIck");
+            person.Add("age", 422225);
+            person.Add("company", "West Wind");
+            person.Add("name2", "RIck");
+            person.Add("age2", 422225);
+            person.Add("company2", "West Wind");
+
+            // create a child record
+            //var address = new GenericRecord(addrSchema);
+            //address.Add("address", "32 Kaiea");
+            //address.Add("zipcode", "96779");
+
+            //person.Add("address", address);
+            try
+            {
+                //var st = new FileStream(@"D:\s.avro", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write);
+                ////st.ReadTimeout = 10000;
+                //Avro.IO.Encoder enc = new BinaryEncoder(st);
+                //var dwr = new Avro.Generic.DefaultWriter(schema);
+                //dwr.Write<GenericRecord>(person, enc);
+
+                //st.Close();
+                var st = new FileStream(@"D:\s.avro", FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write);
+                Avro.IO.Encoder enc = new BinaryEncoder(st);
+                var dwr = new Avro.Generic.DefaultWriter(schema);
+                dwr.Write(schema,person, enc);
+                st.Close();
+            }
+            catch (Exception e)  {
+            }
+        }

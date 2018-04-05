@@ -1,0 +1,17 @@
+		byte[] deStr = File.ReadAllBytes(@"D:\user.avro");
+                    MemoryStream memStream = new MemoryStream(deStr);
+                    //memStream.Read(deStr,0, deStr.Length);
+                    String schPath = Environment.CurrentDirectory + "\\avro\\tube.avsc";
+                    String c = File.ReadAllText(schPath);
+                    RecordSchema schema = RecordSchema.Parse(c) as RecordSchema;
+            
+                    //GenericRecord exampleRecorder = new GenericRecord(schema);
+                    DataFileReader<GenericRecord> dfr =
+                                    (DataFileReader<GenericRecord>)DataFileReader<GenericRecord>
+                                    .OpenReader(memStream, schema);
+
+                    Boolean b =  dfr.HasNext();
+
+                    GenericRecord record = dfr.Next();
+                    
+                    String values = record["name"].ToString();

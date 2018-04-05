@@ -1,0 +1,6 @@
+使用 dblink 链接 数据库，拷贝数据到本地
+(DESCRIPTION = 
+(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.24.10.34)(PORT = 1521)))    
+(CONNECT_DATA = (SID = jtbiobank)))
+
+jtbiobank 为用户名

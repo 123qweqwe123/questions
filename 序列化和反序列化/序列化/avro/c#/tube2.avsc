@@ -1,0 +1,14 @@
+{
+    "type": "record",
+    "name": "Person",
+    "fields": [
+        { "name": "name", "type": "string" },
+        { "name": "age", "type": "int" },
+        { "name": "company", "type": "string" },
+	{ "name": "name2", "type": "string" },
+        { "name": "age2", "type": "int" },
+        { "name": "company2", "type": "string" }
+       
+        
+    ]
+}

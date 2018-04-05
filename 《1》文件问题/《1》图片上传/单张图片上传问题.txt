@@ -1,0 +1,21 @@
+1. ajax提交==》 form表单提交得不到返回值
+
+form表单内容 enctype="multipart/form-data"
+ajax部分
+$.ajax({
+        type:"POST",
+        url:"/files",
+        data: new FormData($("#tform_2")[0]),
+        contentType:false,
+        processData:false, 
+        success:function(data){
+          //成功
+          alert(JSON.stringify(data));
+        },
+        error:function(){
+         //错误
+        }
+});
+
+总结
+1.注意js版本问题
