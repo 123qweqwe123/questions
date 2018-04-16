@@ -1,0 +1,4 @@
+-- Create database link 
+create database link DBLINK_34
+  connect to SCM
+  using '(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.24.10.34)(PORT = 1521))    )    (CONNECT_DATA =      (SID = jtbiobank)    )  )';
